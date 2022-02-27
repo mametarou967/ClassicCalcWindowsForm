@@ -109,5 +109,50 @@ namespace ClassicCalcWindowsForm
         {
             inputManager.InputOpp(Event.InputOperation.Div);
         }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            // 数値
+            if (!e.Shift) {
+                if (e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9)
+                {
+                    {
+                        var inputNumberString = (e.KeyCode - Keys.D0).ToString();
+                        inputManager.InputNum(inputNumberString);
+                    }
+                }
+                
+                if (e.KeyCode == Keys.OemMinus)
+                {
+                    inputManager.InputOpp(Event.InputOperation.Sub);
+                }
+
+                if (e.KeyCode == Keys.OemQuestion)
+                {
+                    inputManager.InputOpp(Event.InputOperation.Div);
+                }
+
+            }
+            else{
+                if (e.KeyCode == Keys.Oemplus)
+                {
+                    inputManager.InputOpp(Event.InputOperation.Add);
+                }
+                
+                if (e.KeyCode == Keys.Oem1)
+                {
+                    inputManager.InputOpp(Event.InputOperation.Mult);
+                }
+
+            }
+            
+            
+
+            //受け取ったキーを表示する
+            Console.WriteLine("KeyCode =" +  e.KeyCode);
+            Console.WriteLine("KeyValue =" + e.KeyValue);
+            Console.WriteLine("KeyData =" + e.KeyData);
+            Console.WriteLine("Shift =" + e.Shift);
+        }
     }
 }
